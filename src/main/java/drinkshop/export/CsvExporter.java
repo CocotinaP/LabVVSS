@@ -12,6 +12,10 @@ import java.util.Date;
 import java.util.List;
 
 public class CsvExporter {
+    private CsvExporter(){
+
+    }
+
     public static void exportOrders(List<Product> products, List<Order> orders, String path) {
         try (FileWriter w = new FileWriter(path)) {
             w.write("OrderId,Product,Quantity,Price\n");

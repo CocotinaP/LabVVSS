@@ -35,7 +35,15 @@ public abstract class AbstractRepository<ID, E>
 
     @Override
     public E update(E entity) {
-        entities.put(getId(entity), entity);
+        ID id = getId(entity);
+
+        // dacă nu există, nu facem update
+        if (!entities.containsKey(id)) {
+            return null; // sau poți arunca o excepție
+        }
+
+        // înlocuim doar dacă exista
+        entities.put(id, entity);
         return entity;
     }
 

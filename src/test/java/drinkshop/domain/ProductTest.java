@@ -22,56 +22,56 @@ class ProductTest {
 
     @Test
     void getId() {
-        assert 100 == product.getId();
+        assertEquals(100, product.getId());
     }
 
     @Test
     void getNume() {
-        assert "Limonada".equals(product.getNume());
+        assertEquals("Limonada", product.getNume());
     }
 
     @Test
     void getPret() {
-        assert 10.0 == product.getPret();
+        assertEquals(10.0, product.getPret());
     }
 
     @Test
     void getCategorie() {
-        assert CategorieBautura.JUICE.equals(product.getCategorie());
+        assertEquals(CategorieBautura.JUICE, product.getCategorie());
     }
 
     @Test
     void setCategorie() {
         product.setCategorie(CategorieBautura.SMOOTHIE);
-        assert CategorieBautura.SMOOTHIE.equals(product.getCategorie());
+        assertEquals(CategorieBautura.SMOOTHIE, product.getCategorie());
     }
 
     @Test
     void getTip() {
-        assert TipBautura.WATER_BASED.equals(product.getTip());
+        assertEquals(TipBautura.WATER_BASED, product.getTip());
     }
 
     @Test
     void setTip() {
         product.setTip(TipBautura.BASIC);
-        assert TipBautura.BASIC.equals(product.getTip());
+        assertEquals(TipBautura.BASIC, product.getTip());
     }
 
     @Test
     void setNume() {
         product.setNume("newLimonada");
-        assert "newLimonada".equals(product.getNume());
+        assertEquals("newLimonada", product.getNume());
     }
 
     @Test
     void setPret() {
         product.setPret(10.05);
-        assert 10.05 == product.getPret();
+        assertEquals(10.05, product.getPret());
     }
 
     @Test
     void testToString() {
-        System.out.println(product.toString());
-        assert "Limonada (JUICE, WATER_BASED) - 10.0 lei".equals(product.toString());
+        assertEquals("Limonada (JUICE, WATER_BASED) - 10.0 lei", product.toString());
     }
+
 }

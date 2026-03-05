@@ -53,7 +53,7 @@ public class DrinkShopController {
     private ObservableList<IngredientReteta> newRetetaList = FXCollections.observableArrayList();
     private ObservableList<OrderItem> currentOrderItems = FXCollections.observableArrayList();
 
-    private Order currentOrder = new Order(1);
+    private Order currentOrder;
 
     public void setService(DrinkShopService service) {
         this.service = service;
@@ -102,6 +102,7 @@ public class DrinkShopController {
     }
 
     private void initData() {
+        currentOrder = new Order(id());
         productList.setAll(service.getAllProducts());
         retetaList.setAll(service.getAllRetete());
         lblTotalRevenue.setText("Daily Revenue: " + service.getDailyRevenue());
@@ -230,8 +231,15 @@ public class DrinkShopController {
         txtReceipt.setText(service.generateReceipt(currentOrder));
 
         currentOrderItems.clear();
-        currentOrder = new Order(currentOrder.getId() + 1);
+        currentOrder = new Order(id());
         updateOrderTotal();
+    }
+
+    private int id(){
+        return service.getAllOrders().stream()
+                .mapToInt(Order::getId)
+                .max()
+                .orElse(0) + 1;
     }
 
     private void updateOrderTotal() {
