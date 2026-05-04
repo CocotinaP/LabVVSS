@@ -76,6 +76,21 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+            <include>**/*Tests.java</include>
+          </includes>
+          <useFile>true</useFile>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
+          <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+          <properties>
+            <property>
+              <name>junit.platform.reporting.output.dir</name>
+              <value>${project.build.directory}/surefire-reports</value>
+            </property>
+          </properties>
+        </configuration>
       </plugin>
 
       <plugin>
